@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html, body { width: 1200px; height: 630px; }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #160910;
+    color: #f6ebef;
+    background-image:
+      radial-gradient(900px 460px at 16% -8%, rgba(255,132,159,0.14), transparent 60%),
+      radial-gradient(820px 560px at 104% 18%, rgba(255,107,138,0.10), transparent 60%);
+    padding: 72px 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+  }
+  .eyebrow {
+    font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 500;
+    color: #ff849f; text-transform: uppercase; letter-spacing: 4px;
+  }
+  h1 {
+    font-family: 'Instrument Serif', serif; font-weight: 400;
+    font-size: 96px; line-height: 1.02; letter-spacing: -2px; margin-top: 28px;
+  }
+  h1 em { color: #ff849f; font-style: italic; }
+  .lede {
+    font-size: 25px; color: #c9a8b3; max-width: 720px; margin-top: 30px; line-height: 1.45;
+  }
+  .foot { display: flex; align-items: baseline; gap: 18px; }
+  .mark { font-family: 'Instrument Serif', serif; font-size: 40px; color: #ff849f; letter-spacing: -0.5px; }
+  .by { font-family: 'JetBrains Mono', monospace; font-size: 17px; color: #c9a8b3; letter-spacing: 1px; }
+  .url { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 17px; color: #c9a8b3; letter-spacing: 1px; }
+  .pulse { position: absolute; right: 70px; top: 90px; opacity: 0.9; }
+</style>
+</head>
+<body>
+  <svg class="pulse" width="320" height="120" viewBox="0 0 320 120">
+    <!-- heartbeat easing into a heart -->
+    <polyline points="0,60 96,60 122,60 142,30 168,96 196,60"
+      fill="none" stroke="#ff6b8a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+    <path d="M262 44
+             c -10 -20 -40 -18 -40 6
+             c 0 16 22 30 40 44
+             c 18 -14 40 -28 40 -44
+             c 0 -24 -30 -26 -40 -6 z"
+      fill="none" stroke="#ff849f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  </svg>
+
+  <div>
+    <div class="eyebrow">one person · no swiping</div>
+    <h1>A dating site with<br>exactly <em>one person</em> on it.</h1>
+    <div class="lede">Get to know him, check the compatibility, and talk to the agent who knows him a little too well.</div>
+  </div>
+
+  <div class="foot">
+    <span class="mark">date</span>
+    <span class="by">Sankha Cooray</span>
+    <span class="url">date.sankhacooray.com</span>
+  </div>
+</body>
+</html>
