@@ -11,8 +11,8 @@
     background: #160910;
     color: #f6ebef;
     background-image:
-      radial-gradient(900px 460px at 16% -8%, rgba(255,132,159,0.14), transparent 60%),
-      radial-gradient(820px 560px at 104% 18%, rgba(255,107,138,0.10), transparent 60%);
+      radial-gradient(900px 460px at 16% -8%, rgba(255,132,159,0.16), transparent 60%),
+      radial-gradient(820px 560px at 104% 18%, rgba(255,107,138,0.12), transparent 60%);
     padding: 72px 80px;
     display: flex;
     flex-direction: column;
@@ -20,6 +20,7 @@
     position: relative;
     overflow: hidden;
   }
+  .field { position: absolute; inset: 0; z-index: 0; }
   .eyebrow {
     font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 500;
     color: #ff849f; text-transform: uppercase; letter-spacing: 4px;
@@ -30,29 +31,50 @@
   }
   h1 em { color: #ff849f; font-style: italic; }
   .lede {
-    font-size: 25px; color: #c9a8b3; max-width: 720px; margin-top: 30px; line-height: 1.45;
+    font-size: 25px; color: #c9a8b3; max-width: 640px; margin-top: 30px; line-height: 1.45;
   }
-  .foot { display: flex; align-items: baseline; gap: 18px; }
+  .foot { display: flex; align-items: baseline; gap: 18px; position: relative; z-index: 1; }
   .mark { font-family: 'Instrument Serif', serif; font-size: 40px; color: #ff849f; letter-spacing: -0.5px; }
   .by { font-family: 'JetBrains Mono', monospace; font-size: 17px; color: #c9a8b3; letter-spacing: 1px; }
   .url { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 17px; color: #c9a8b3; letter-spacing: 1px; }
-  .pulse { position: absolute; right: 70px; top: 90px; opacity: 0.9; }
+  .content { position: relative; z-index: 1; }
+
+  /* compatibility ring, top-right */
+  .ring { position: absolute; right: 82px; top: 74px; width: 208px; height: 208px; z-index: 1; }
+  .ring .pct { font-family: 'Instrument Serif', serif; font-size: 58px; fill: #ff849f; }
+  .ring .lbl { font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 3px; fill: #c9a8b3; text-transform: uppercase; }
 </style>
 </head>
 <body>
-  <svg class="pulse" width="320" height="120" viewBox="0 0 320 120">
-    <!-- heartbeat easing into a heart -->
-    <polyline points="0,60 96,60 122,60 142,30 168,96 196,60"
-      fill="none" stroke="#ff6b8a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
-    <path d="M262 44
-             c -10 -20 -40 -18 -40 6
-             c 0 16 22 30 40 44
-             c 18 -14 40 -28 40 -44
-             c 0 -24 -30 -26 -40 -6 z"
-      fill="none" stroke="#ff849f" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+  <!-- faint scattered-hearts field -->
+  <svg class="field" viewBox="0 0 1200 630" fill="none">
+    <defs>
+      <path id="h" d="M0 -3 c -5 -10 -20 -9 -20 3 c 0 8 11 15 20 22 c 9 -7 20 -14 20 -22 c 0 -12 -15 -13 -20 -3 z"/>
+    </defs>
+    <g stroke="#ff849f" stroke-width="2" opacity="0.10">
+      <use href="#h" transform="translate(120 470) scale(1.6)"/>
+      <use href="#h" transform="translate(250 360) scale(1.0)"/>
+      <use href="#h" transform="translate(70 250) scale(0.8)"/>
+      <use href="#h" transform="translate(980 470) scale(2.1)"/>
+      <use href="#h" transform="translate(1080 300) scale(1.2)"/>
+      <use href="#h" transform="translate(860 540) scale(0.9)"/>
+      <use href="#h" transform="translate(1140 540) scale(1.4)"/>
+      <use href="#h" transform="translate(700 120) scale(0.8)"/>
+    </g>
   </svg>
 
-  <div>
+  <!-- 100% match ring -->
+  <svg class="ring" viewBox="0 0 208 208">
+    <circle cx="104" cy="104" r="92" fill="none" stroke="rgba(255,132,159,0.18)" stroke-width="10"/>
+    <circle cx="104" cy="104" r="92" fill="none" stroke="#ff849f" stroke-width="10"
+      stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="0" transform="rotate(-90 104 104)"/>
+    <path d="M104 78 c -7 -14 -28 -12 -28 4 c 0 11 15 21 28 31 c 13 -10 28 -20 28 -31 c 0 -16 -21 -18 -28 -4 z"
+      fill="#ff849f" opacity="0.9"/>
+    <text class="pct" x="104" y="150" text-anchor="middle">100%</text>
+    <text class="lbl" x="104" y="178" text-anchor="middle">match</text>
+  </svg>
+
+  <div class="content">
     <div class="eyebrow">one person · no swiping</div>
     <h1>A dating site with<br>exactly <em>one person</em> on it.</h1>
     <div class="lede">Get to know him, check the compatibility, and talk to the agent who knows him a little too well.</div>
