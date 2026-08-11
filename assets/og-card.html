@@ -2,88 +2,97 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 1200px; height: 630px; }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  html, body { width:1200px; height:630px; }
   body {
-    font-family: 'DM Sans', sans-serif;
-    background: #160910;
-    color: #f6ebef;
+    font-family:'DM Sans',sans-serif; background:#160910; color:#f6ebef;
     background-image:
-      radial-gradient(900px 460px at 16% -8%, rgba(255,132,159,0.16), transparent 60%),
-      radial-gradient(820px 560px at 104% 18%, rgba(255,107,138,0.12), transparent 60%);
-    padding: 72px 80px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    position: relative;
-    overflow: hidden;
+      radial-gradient(900px 460px at 12% -8%, rgba(255,132,159,0.18), transparent 60%),
+      radial-gradient(760px 520px at 108% 26%, rgba(255,107,138,0.14), transparent 60%);
+    position:relative; overflow:hidden;
   }
-  .field { position: absolute; inset: 0; z-index: 0; }
-  .eyebrow {
-    font-family: 'JetBrains Mono', monospace; font-size: 20px; font-weight: 500;
-    color: #ff849f; text-transform: uppercase; letter-spacing: 4px;
-  }
-  h1 {
-    font-family: 'Instrument Serif', serif; font-weight: 400;
-    font-size: 96px; line-height: 1.02; letter-spacing: -2px; margin-top: 28px;
-  }
-  h1 em { color: #ff849f; font-style: italic; }
-  .lede {
-    font-size: 25px; color: #c9a8b3; max-width: 640px; margin-top: 30px; line-height: 1.45;
-  }
-  .foot { display: flex; align-items: baseline; gap: 18px; position: relative; z-index: 1; }
-  .mark { font-family: 'Instrument Serif', serif; font-size: 40px; color: #ff849f; letter-spacing: -0.5px; }
-  .by { font-family: 'JetBrains Mono', monospace; font-size: 17px; color: #c9a8b3; letter-spacing: 1px; }
-  .url { margin-left: auto; font-family: 'JetBrains Mono', monospace; font-size: 17px; color: #c9a8b3; letter-spacing: 1px; }
-  .content { position: relative; z-index: 1; }
+  .field { position:absolute; inset:0; z-index:0; }
+  .inner { position:absolute; inset:0; padding:72px 80px; display:flex; flex-direction:column; justify-content:space-between; z-index:2; }
+  .col { max-width:664px; }
+  .eyebrow { font-family:'JetBrains Mono',monospace; font-size:20px; font-weight:500; color:#ff849f; text-transform:uppercase; letter-spacing:4px; }
+  h1 { font-family:'Instrument Serif',serif; font-weight:400; font-size:72px; line-height:1.05; letter-spacing:-1.5px; margin-top:24px; }
+  h1 em { color:#ff849f; font-style:italic; }
+  .lede { font-size:24px; color:#c9a8b3; max-width:520px; margin-top:26px; line-height:1.45; }
+  .foot { display:flex; align-items:baseline; gap:18px; }
+  .mark { font-family:'Instrument Serif',serif; font-size:40px; color:#ff849f; letter-spacing:-0.5px; }
+  .by { font-family:'JetBrains Mono',monospace; font-size:17px; color:#c9a8b3; letter-spacing:1px; }
+  .url { margin-left:auto; font-family:'JetBrains Mono',monospace; font-size:17px; color:#c9a8b3; letter-spacing:1px; }
 
-  /* compatibility ring, top-right */
-  .ring { position: absolute; right: 82px; top: 74px; width: 208px; height: 208px; z-index: 1; }
-  .ring .pct { font-family: 'Instrument Serif', serif; font-size: 58px; fill: #ff849f; }
-  .ring .lbl { font-family: 'JetBrains Mono', monospace; font-size: 15px; letter-spacing: 3px; fill: #c9a8b3; text-transform: uppercase; }
+  /* swipe-card stack, right side */
+  .stack { position:absolute; right:88px; top:50%; transform:translateY(-50%); z-index:1; width:300px; height:392px; }
+  .pcard { position:absolute; inset:0; border-radius:24px; border:1px solid rgba(255,132,159,0.22);
+    background:linear-gradient(160deg,#2a1119,#1a0a10); box-shadow:0 30px 60px -30px rgba(0,0,0,0.8); }
+  .pcard.b1 { transform:rotate(-8deg) translate(-14px,10px) scale(0.96); opacity:0.45; }
+  .pcard.b2 { transform:rotate(6deg) translate(12px,4px) scale(0.98); opacity:0.7; }
+  .pcard.top { transform:rotate(-2deg); overflow:hidden; }
+  .photo { position:absolute; left:0; right:0; top:0; height:250px;
+    background:radial-gradient(120px 120px at 50% 46%, rgba(255,132,159,0.30), transparent 70%), linear-gradient(160deg,#3a1420,#25101a); }
+  .photo .heart { position:absolute; left:50%; top:46%; transform:translate(-50%,-50%); }
+  .pill { position:absolute; left:16px; top:16px; font-family:'JetBrains Mono',monospace; font-size:13px; letter-spacing:1px;
+    background:rgba(255,132,159,0.92); color:#2a0d15; padding:4px 11px; border-radius:999px; font-weight:600; }
+  .verified { position:absolute; right:16px; top:14px; }
+  .info { position:absolute; left:20px; right:20px; top:266px; }
+  .name { font-family:'Instrument Serif',serif; font-size:34px; color:#f6ebef; line-height:1; }
+  .sub { font-family:'JetBrains Mono',monospace; font-size:14px; color:#ff849f; letter-spacing:1px; margin-top:9px; }
+  .actions { position:absolute; left:20px; right:20px; bottom:20px; display:flex; gap:16px; align-items:center; justify-content:flex-start; }
+  .btn { width:52px; height:52px; border-radius:50%; display:flex; align-items:center; justify-content:center;
+    border:2px solid rgba(255,132,159,0.35); }
+  .btn.like { background:#ff849f; border-color:#ff849f; box-shadow:0 8px 20px -6px rgba(255,132,159,0.6); }
 </style>
 </head>
 <body>
   <!-- faint scattered-hearts field -->
   <svg class="field" viewBox="0 0 1200 630" fill="none">
-    <defs>
-      <path id="h" d="M0 -3 c -5 -10 -20 -9 -20 3 c 0 8 11 15 20 22 c 9 -7 20 -14 20 -22 c 0 -12 -15 -13 -20 -3 z"/>
-    </defs>
+    <defs><path id="h" d="M0 -3 c -5 -10 -20 -9 -20 3 c 0 8 11 15 20 22 c 9 -7 20 -14 20 -22 c 0 -12 -15 -13 -20 -3 z"/></defs>
     <g stroke="#ff849f" stroke-width="2" opacity="0.10">
       <use href="#h" transform="translate(120 470) scale(1.6)"/>
-      <use href="#h" transform="translate(250 360) scale(1.0)"/>
+      <use href="#h" transform="translate(300 380) scale(1.0)"/>
       <use href="#h" transform="translate(70 250) scale(0.8)"/>
-      <use href="#h" transform="translate(980 470) scale(2.1)"/>
-      <use href="#h" transform="translate(1080 300) scale(1.2)"/>
-      <use href="#h" transform="translate(860 540) scale(0.9)"/>
-      <use href="#h" transform="translate(1140 540) scale(1.4)"/>
-      <use href="#h" transform="translate(700 120) scale(0.8)"/>
+      <use href="#h" transform="translate(560 150) scale(1.1)"/>
+      <use href="#h" transform="translate(470 520) scale(0.9)"/>
+      <use href="#h" transform="translate(650 560) scale(1.3)"/>
     </g>
   </svg>
 
-  <!-- 100% match ring -->
-  <svg class="ring" viewBox="0 0 208 208">
-    <circle cx="104" cy="104" r="92" fill="none" stroke="rgba(255,132,159,0.18)" stroke-width="10"/>
-    <circle cx="104" cy="104" r="92" fill="none" stroke="#ff849f" stroke-width="10"
-      stroke-linecap="round" stroke-dasharray="578" stroke-dashoffset="0" transform="rotate(-90 104 104)"/>
-    <path d="M104 78 c -7 -14 -28 -12 -28 4 c 0 11 15 21 28 31 c 13 -10 28 -20 28 -31 c 0 -16 -21 -18 -28 -4 z"
-      fill="#ff849f" opacity="0.9"/>
-    <text class="pct" x="104" y="150" text-anchor="middle">100%</text>
-    <text class="lbl" x="104" y="178" text-anchor="middle">match</text>
-  </svg>
-
-  <div class="content">
-    <div class="eyebrow">one person · no swiping</div>
-    <h1>A dating site with<br>exactly <em>one person</em> on it.</h1>
-    <div class="lede">Get to know him, check the compatibility, and talk to the agent who knows him a little too well.</div>
+  <!-- profile / swipe-card stack -->
+  <div class="stack">
+    <div class="pcard b1"></div>
+    <div class="pcard b2"></div>
+    <div class="pcard top">
+      <div class="photo">
+        <span class="pill">1 of 1</span>
+        <svg class="verified" width="26" height="26" viewBox="0 0 24 24"><circle cx="12" cy="12" r="11" fill="#ff849f"/><path d="M7 12.5l3 3 6-6.5" fill="none" stroke="#2a0d15" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <svg class="heart" width="118" height="118" viewBox="0 0 24 24"><path d="M12 21c-6-4.4-9-8-9-11.5C3 6 5.5 4 8 4c1.7 0 3.2.9 4 2.3C12.8 4.9 14.3 4 16 4c2.5 0 5 2 5 5.5C21 13 18 16.6 12 21z" fill="#ff849f"/></svg>
+      </div>
+      <div class="info">
+        <div class="name">The only one</div>
+        <div class="sub">100% compatible</div>
+      </div>
+      <div class="actions">
+        <span class="btn nope"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#c9a8b3" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg></span>
+        <span class="btn like"><svg width="24" height="24" viewBox="0 0 24 24"><path d="M12 21c-6-4.4-9-8-9-11.5C3 6 5.5 4 8 4c1.7 0 3.2.9 4 2.3C12.8 4.9 14.3 4 16 4c2.5 0 5 2 5 5.5C21 13 18 16.6 12 21z" fill="#2a0d15"/></svg></span>
+      </div>
+    </div>
   </div>
 
-  <div class="foot">
-    <span class="mark">date</span>
-    <span class="by">Sankha Cooray</span>
-    <span class="url">date.sankhacooray.com</span>
+  <div class="inner">
+    <div class="col">
+      <div class="eyebrow">one person · no swiping</div>
+      <h1>A dating site with<br>exactly <em>one person</em> on it.</h1>
+      <div class="lede">Get to know him, check the compatibility, and talk to the agent who knows him a little too well.</div>
+    </div>
+    <div class="foot">
+      <span class="mark">date</span>
+      <span class="by">Sankha Cooray</span>
+      <span class="url">date.sankhacooray.com</span>
+    </div>
   </div>
 </body>
 </html>
