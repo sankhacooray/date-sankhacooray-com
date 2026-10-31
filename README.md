@@ -16,7 +16,7 @@ yet wired).
 
 1. **How it works** — the one-way, one-person premise
 2. **Subtle clues** — small true things about personality + lifestyle, with
-   cross-links to the sibling sub-sites (coffeelab, ensemble, fold, palette, mixlab)
+   cross-links to the sibling sub-sites (coffeelab, ensemble, craft, design, mixlab)
 3. **Compatibility** — a 5-question, nothing-saved vibe-check with a playful verdict
 4. **Ask the agent** — a stubbed chat UI (canned responses keyed on topics)
 
